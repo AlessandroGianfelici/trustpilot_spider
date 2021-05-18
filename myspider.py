@@ -5,6 +5,7 @@ from scrapy.linkextractors import LinkExtractor
 import os
 from datetime import datetime
 from trustpilot_scraper import scrapeTrustPilot
+import time 
 
 class MySpider(CrawlSpider):
     name = 'gspider'
@@ -16,6 +17,8 @@ class MySpider(CrawlSpider):
     def parse_item(self, response):
         if "review" in response.url:
             filename = f'{datetime.now().strftime("%Y%m%d%H%M%S%f")}.csv'
+            time.sleep(1)
             myRev = scrapeTrustPilot(response.body)
-            myRev.to_csv(os.path.join("data", filename))
+            if len(myRev)>0:
+                myRev.to_csv(os.path.join("data", filename))
         self.log('crawling'.format(response.url))
