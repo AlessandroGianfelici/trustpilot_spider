@@ -9,7 +9,7 @@ import time
 
 class MySpider(CrawlSpider):
     name = 'gspider'
-    allowed_domains = ['trustpilot.com']
+    allowed_domains = ['it.trustpilot.com']
     start_urls = [r'https://it.trustpilot.com']
     rules = (# Extract and follow all links!
         Rule(LinkExtractor(), callback='parse_item', follow=True), )
