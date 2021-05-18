@@ -17,7 +17,7 @@ class MySpider(CrawlSpider):
     def parse_item(self, response):
         if "review" in response.url:
             filename = f'{datetime.now().strftime("%Y%m%d%H%M%S%f")}.csv'
-            time.sleep(1)
+            time.sleep(10)
             myRev = scrapeTrustPilot(response.body)
             if len(myRev)>0:
                 myRev.to_csv(os.path.join("data", filename))
