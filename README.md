@@ -19,4 +19,12 @@ In the root folder run the command:
 scrapy runspider myspider.py
 ```
 
+And then, to dump the rows txt files:
+
+```python
+python build_dataset.py
+```
+
+
+
 
