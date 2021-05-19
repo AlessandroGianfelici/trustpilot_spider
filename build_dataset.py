@@ -8,5 +8,7 @@ for file in os.listdir('data'):
     tmp = pd.read_csv(os.path.join('data', file))
     mylist.append(tmp.loc[tmp['language'] == 'it'])
     
-pd.concat(mylist).to_csv('data.csv', index=0)
-    
+result = pd.concat(mylist)[['company_name','review_title','review_text','review_stars']].drop_duplicates()
+print(f"Dumping {len(result}) results...")
+result.to_csv('data.csv', index=0)
+print("Done!")
