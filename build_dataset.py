@@ -7,7 +7,7 @@ mylist = []
 all_files = os.listdir('data')
 print(f"Found {len(all_files)} files...")
 
-for file in :
+for file in all_files:
     tmp = pd.read_csv(os.path.join('data', file))
     mylist.append(tmp.loc[tmp['language'] == 'it'])
     
